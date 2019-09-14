@@ -147,11 +147,11 @@ for line in emailFile:
     emails.append(caesarOut(vigOut(line, 'systemic'), 10))
 
 # This is the output.
-output = "output"
 negScore = 0.0
 neuScore = 0.0
 posScore = 0.0
 comScore = 0.0
+sentences = 0.0
 
 # Now that our emails are set up in our list, for every email string in the list of email strings
 for i in range(0, len(emails)):
@@ -162,7 +162,7 @@ for i in range(0, len(emails)):
     # And turn it into a list of individual sentences to be sent to Lord Vader.
     sent = sent_tokenize(inputEmail, 'english')
     # Total sentences.
-    num = len(sent)
+    sentences = sentences + len(sent)
 
     # This is what does all the work for the sentiment analysis.
     sid = SentimentIntensityAnalyzer()
@@ -184,8 +184,8 @@ for i in range(0, len(emails)):
             if k == "compound":
                 comScore = comScore + ss[k]
 
-negFinal = negScore / (len(emails))
-neuFinal = neuScore / (len(emails))
-posFinal = posScore / (len(emails))
-comFinal = comScore / (len(emails))
+negFinal = negScore / sentences
+neuFinal = neuScore / sentences
+posFinal = posScore / sentences
+comFinal = comScore / sentences
 print("{0} {1} {2} {3}".format(negFinal, neuFinal, posFinal, comFinal))
