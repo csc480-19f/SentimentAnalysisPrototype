@@ -1,5 +1,6 @@
 /**
- * This class shows an example of a typical usage of RunsPython.sentimize(String[] emails)
+ * This class shows an example of a typical usage of RunsPython.sentimize(String[] emails).
+ * Also, it demonstrates how to use AnalyzeThis.sentimize(String[] emails).
  */
 public class AnalyzerTester {
 
@@ -11,6 +12,16 @@ public class AnalyzerTester {
             //To note; the resulting array from RunsPython.sentimize(emails) is in the order of:
             //neg, neu, pos, compound
             System.out.println("Zults: "+d);
+        }
+        double[][][] zults3 = AnalyzeThis.sentimize(emails, 0);
+        for(double[][] q : zults3){
+            for(double[] w : q){
+                for(double d : w){
+                    System.out.print(d+" ");
+                }
+                System.out.print(": ");
+            }
+            System.out.println();
         }
     }
 
