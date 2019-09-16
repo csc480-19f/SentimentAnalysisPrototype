@@ -23,6 +23,10 @@ public class AnalyzerTester {
             }
             System.out.println();
         }
+        System.out.println(AnalyzeThis.averageNeg(zults3));
+        System.out.println(AnalyzeThis.averageNeu(zults3));
+        System.out.println(AnalyzeThis.averagePos(zults3));
+        System.out.println(AnalyzeThis.averageCompound(zults3));
     }
 
 }
