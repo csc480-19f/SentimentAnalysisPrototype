@@ -96,4 +96,71 @@ public class AnalyzeThis {
         return retVal;
     }
 
+    /**
+     * Feed me the results please.
+     * @param results Results from a processResults(sentimize(emails)) call.
+     * @return The average negative score.
+     */
+    public static double averageNeg(double[][][] results){
+        double total = 0.0;
+        double sentences = 0.0;
+        for(double[][] email : results){
+            for(double[] scores : email){
+                total += scores[0];
+                sentences += 1;
+            }
+        }
+        return total / sentences;
+    }
+
+    /**
+     * Feed me the results please.
+     * @param results Results from a processResults(sentimize(emails)) call.
+     * @return The average neutral score.
+     */
+    public static double averageNeu(double[][][] results){
+        double total = 0.0;
+        double sentences = 0.0;
+        for(double[][] email : results){
+            for(double[] scores : email){
+                total += scores[1];
+                sentences += 1;
+            }
+        }
+        return total / sentences;
+    }
+
+    /**
+     * Feed me the results please.
+     * @param results Results from a processResults(sentimize(emails)) call.
+     * @return The average positive score.
+     */
+    public static double averagePos(double[][][] results){
+        double total = 0.0;
+        double sentences = 0.0;
+        for(double[][] email : results){
+            for(double[] scores : email){
+                total += scores[2];
+                sentences += 1;
+            }
+        }
+        return total / sentences;
+    }
+
+    /**
+     * Feed me the results please.
+     * @param results Results from a processResults(sentimize(emails)) call.
+     * @return The average compound score.
+     */
+    public static double averageCompound(double[][][] results){
+        double total = 0.0;
+        double sentences = 0.0;
+        for(double[][] email : results){
+            for(double[] scores : email){
+                total += scores[3];
+                sentences += 1;
+            }
+        }
+        return total / sentences;
+    }
 }
