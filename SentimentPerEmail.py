@@ -7,11 +7,7 @@ This program deciphers the input file given by the java file.
 The input file is formatted as one email per line, with each email presumably having multiple sentences.
 This program creates an output file of sentiment values, one email per line, each sentence having four double values.
 The print output of this file is the output file's name.
-
-
-
 If you use the VADER sentiment analysis tools, please cite:
-
 Hutto, C.J. & Gilbert, E.E. (2014). VADER: A Parsimonious Rule-based Model for
 Sentiment Analysis of Social Media Text. Eighth International Conference on
 Weblogs and Social Media (ICWSM-14). Ann Arbor, MI, June 2014.
@@ -189,7 +185,7 @@ for i in range(0, len(emails)):
         outputScores.append(element)
     combinedScores.append(outputScores)
 
-outputFile = open("output{0}.txt".format(sys.argv[2]), "w+")
+outputFile = open("output.txt", "w+")
 for q in range(0, len(combinedScores)):
     for w in range(0, len(combinedScores[q])):
         outputFile.write("{0} {1} {2} {3} ".format(combinedScores[q][w][0], combinedScores[q][w][1],

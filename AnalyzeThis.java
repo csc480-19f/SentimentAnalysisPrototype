@@ -14,15 +14,14 @@ public class AnalyzeThis {
     /**
      * This returns the results from the sentiment analysis of the list of emails.
      * @param emails The list of emails to be analyzed.
-     * @param threadID The number appended to the end of the file.txt. Used for concurrency.
      * @return A double[][][] array of emails' sentences' doubles for neg, neu, pos, and compound for the list of emails.
      */
-    public static double[][][] sentimize(String[] emails, long threadID){
+    public static double[][][] sentimize(String[] emails){
         ArrayList<ArrayList<ArrayList<Double>>> retVal = new ArrayList<>();
 
         //This section creates the file and enciphers it.
 
-        File pyIn = new File("pythonInput"+threadID+".txt");
+        File pyIn = new File("pythonInput.txt");
         try{
             pyIn.createNewFile();
             FileWriter write = new FileWriter(pyIn);
@@ -45,13 +44,18 @@ public class AnalyzeThis {
         //This section feeds the python code the enciphered .txt file and demands the sentiment results.
 
         String filePath = pyIn.getPath();
+        File input = new File("output.txt");
 
         try {
             //TODO Replace the command string with the final pathname for the sentiment analyzer, SentimentPerEmail.py.
             Process p = Runtime.getRuntime().exec("python C:/Users/pbois/PycharmProjects/Sentiment/SentimentPerEmail.py "
-                    + filePath + threadID);
-            //TODO Replace the string for the file's path with the permanent pathname.
-            File input = new File("C:/Users/pbois/PycharmProjects/Sentiment/output"+threadID+".txt");
+                    + filePath);
+            BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()), 8);
+            String vals = in.readLine();
+            String trigger = new Scanner(vals).nextLine();
+            while(!trigger.equals("output.txt")){
+
+            }
             Scanner scone = new Scanner(input);
             while(scone.hasNext()){
                 Scanner cone = new Scanner(scone.nextLine());

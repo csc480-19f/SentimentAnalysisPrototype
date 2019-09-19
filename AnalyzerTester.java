@@ -13,7 +13,7 @@ public class AnalyzerTester {
             //neg, neu, pos, compound
             System.out.println("Zults: "+d);
         }
-        double[][][] zults3 = AnalyzeThis.sentimize(emails, 0);
+        double[][][] zults3 = AnalyzeThis.sentimize(emails);
         for(double[][] q : zults3){
             for(double[] w : q){
                 for(double d : w){
