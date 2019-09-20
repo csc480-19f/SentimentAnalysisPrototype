@@ -1,0 +1,7 @@
+pip install --user -U nltk
+pip install --user -U numpy
+python
+# Now we are in the python shell.
+>>> nltk.download('vader_lexicon')
+
+# This will result in all of the required infrastructure to be downloaded.
