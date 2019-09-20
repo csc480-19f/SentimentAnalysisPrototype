@@ -166,4 +166,38 @@ public class AnalyzeThis {
         }
         return total / sentences;
     }
+
+    /**
+     * This method restricts strings to char values 0 to 255.
+     * @param s The string that needs to be fixed.
+     * @return The fixed string.
+     */
+    private static String fix(String s) {
+        String retVal = "";
+        char[] letters = s.toCharArray();
+        for(int i = 0; i < letters.length; i++){
+            if(letters[i] >= 0 && letters[i] <=255){
+                retVal += letters[i];
+            }
+        }
+        return retVal;
+    }
+
+    /**
+     * This method counts the number of sentences in an email. Probably easier to use this than the arrayList thing.
+     * @param email The text to be counted for sentences.
+     * @return The sentence count as an integer.
+     */
+    public static int sentenceCount(String email) {
+        int retVal = -1;
+        try {
+            //TODO change this to the final resting point for SentenceCounter.py
+            Process p =  Runtime.getRuntime().exec("python C:/Users/pbois/PycharmProjects/Sentiment/SentenceCounter.py "+email);
+            BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()), 8);
+            retVal = Integer.parseInt(in.readLine());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return retVal;
+    }
 }
