@@ -52,8 +52,7 @@ public class AnalyzeThis {
                     + filePath);
             BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()), 8);
             String vals = in.readLine();
-            String trigger = new Scanner(vals).nextLine();
-            while(!trigger.equals("output.txt")){
+            while(!vals.equals("output.txt")){
 
             }
             Scanner scone = new Scanner(input);

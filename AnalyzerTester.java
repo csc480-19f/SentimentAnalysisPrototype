@@ -1,3 +1,7 @@
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
+
 /**
  * This class shows an example of a typical usage of RunsPython.sentimize(String[] emails).
  * Also, it demonstrates how to use AnalyzeThis.sentimize(String[] emails).
@@ -27,6 +31,21 @@ public class AnalyzerTester {
         System.out.println(AnalyzeThis.averageNeu(zults3));
         System.out.println(AnalyzeThis.averagePos(zults3));
         System.out.println(AnalyzeThis.averageCompound(zults3));
+        String[] emailList = new String[1000];
+        Scanner scone;
+        try{
+            scone =new Scanner(new File("emails.txt"));
+          for(int q = 0; q < 1000; q++){
+              emailList[q] = scone.nextLine();
+          }
+        }
+        catch(IOException e) {
+            e.printStackTrace();
+        }
+        long begin = System.currentTimeMillis();
+        AnalyzeThis.sentimize(emailList);
+        long end = System.currentTimeMillis();
+        System.out.println("1000 emails time: "+((end-begin)/1000));
     }
 
 }
