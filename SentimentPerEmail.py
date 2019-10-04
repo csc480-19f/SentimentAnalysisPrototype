@@ -2,11 +2,14 @@ from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from nltk.tokenize import sent_tokenize
 import sys
 
+# TODO Determine if the file pathing will be taken care of here or in java.
+
 '''
 This program deciphers the input file given by the java file.
 The input file is formatted as one email per line, with each email presumably having multiple sentences.
 This program creates an output file of sentiment values, one email per line, each sentence having four double values.
 The print output of this file is the output file's name.
+
 If you use the VADER sentiment analysis tools, please cite:
 Hutto, C.J. & Gilbert, E.E. (2014). VADER: A Parsimonious Rule-based Model for
 Sentiment Analysis of Social Media Text. Eighth International Conference on
@@ -185,6 +188,7 @@ for i in range(0, len(emails)):
         outputScores.append(element)
     combinedScores.append(outputScores)
 
+# TODO This may need to be changed to reflect the file path for the java files, otherwise, send the file path.
 outputFile = open("output.txt", "w+")
 for q in range(0, len(combinedScores)):
     for w in range(0, len(combinedScores[q])):

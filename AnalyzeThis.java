@@ -6,6 +6,8 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+//TODO Determine the final path locations of the python file and its output and which file is using that info.
+
 /**
  * This class holds methods that execute python code.
  */
@@ -52,6 +54,7 @@ public class AnalyzeThis {
                     + filePath);
             BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()), 8);
             String vals = in.readLine();
+            //TODO This will need to be changed to reflect the path the python file spits out, unless python puts it here.
             while(!vals.equals("output.txt")){
 
             }
